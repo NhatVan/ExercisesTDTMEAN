@@ -19,7 +19,7 @@ angular.module('todomvc')
 			});
 	})
 
-	.factory('api',['$http','promiseFactory', function ($http,promiseFactory) {
+	.factory('api', function ($http) {
 		'use strict';
 
 		var store = {
@@ -106,4 +106,4 @@ angular.module('todomvc')
 		};
 
 		return store;
-	}]);
+	});
