@@ -1,7 +1,7 @@
 'use strict';
 var Todo = require('./todoModel');
 exports.postNewTodo = function(data) {
-    var def = require('../common/model/promise').create();
+    var def = require('q').defer();
     var newTodo = new Todo({
         title: data.title,
         completed: data.completed
@@ -20,11 +20,11 @@ exports.postNewTodo = function(data) {
         def.resolve(responseMessage);
 
     });
-    return def;
+    return def.promise;
 };
 
 exports.getTodos = function() {
-    var def = require('../common/model/promise').create();
+    var def = require('q').defer();
     Todo.find({}, function(err, items) {
         var responseMessage = require('../common/model/responseMessage').create();
         if (err) {
@@ -36,12 +36,12 @@ exports.getTodos = function() {
         }
         def.resolve(responseMessage);
     });
-    return def;
+    return def.promise;
 };
 
 exports.deleteTodos = function(id) {
-  console.log(id);
-    var def = require('../common/model/promise').create();
+    console.log(id);
+    var def = require('q').defer();
     Todo.findByIdAndRemove(id, function(err, item) {
         var responseMessage = require('../common/model/responseMessage').create();
         if (err) {
@@ -53,11 +53,11 @@ exports.deleteTodos = function(id) {
         }
         def.resolve(responseMessage);
     });
-    return def;
+    return def.promise;
 };
 
 exports.updateTodos = function(id, data) {
-    var def = require('../common/model/promise').create();
+    var def = require('q').defer();
     Todo.findByIdAndUpdate(id, data, function(err, item) {
         var responseMessage = require('../common/model/responseMessage').create();
         if (err) {
@@ -69,11 +69,11 @@ exports.updateTodos = function(id, data) {
         }
         def.resolve(responseMessage);
     });
-    return def;
+    return def.promise;
 };
 
 exports.deleteAllTodos = function() {
-    var def = require('../common/model/promise').create();
+    var def = require('q').defer();
     Todo.remove({}, function(err) {
         var responseMessage = require('../common/model/responseMessage').create();
         if (err) {
@@ -85,5 +85,5 @@ exports.deleteAllTodos = function() {
         }
         def.resolve(responseMessage);
     });
-    return def;
+    return def.promise;
 };
