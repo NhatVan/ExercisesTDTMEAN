@@ -1,0 +1,16 @@
+{
+  "name": "MEAN",
+  "version": "1.0.0",
+  "homepage": "https://github.com/NhatVan/ExercisesTDTMEAN",
+  "authors": [
+    "Nhat Van <nhat.van@orientsoftware.net>"
+  ],
+  "description": "Exercise for TonDucThang MEAN training",
+  "main": "server/app.js",
+  "keywords": [
+    "MEAN",
+    "from",
+    "TodoMVC"
+  ],
+  "license": "MIT"
+}

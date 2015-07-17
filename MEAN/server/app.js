@@ -10,7 +10,7 @@ var port = process.env.PORT || 3000;
 //connect to our mongoDB database
 mongoose.connect(db.url);
 var app = express();
-require('../client/js/jsextension');
+//require('../public/js/jsextension');
 //get all data 
 //parse application/json
 app.use(bodyParser.json());
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 //set the static front-end files
-app.use(express.static(__dirname + '/../' + 'client'));
+app.use(express.static(__dirname + '/../' + 'public'));
 //config route
 require('./app/routes')(app);
 //start app
