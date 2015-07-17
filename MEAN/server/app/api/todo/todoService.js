@@ -72,9 +72,9 @@ exports.updateTodos = function(id, data) {
     return def.promise;
 };
 
-exports.deleteAllTodos = function() {
+exports.cleanUpTodos = function () {
     var def = require('q').defer();
-    Todo.remove({}, function(err) {
+    Todo.remove({ completed: { $eq: true } }, function (err) {
         var responseMessage = require('../common/model/responseMessage').create();
         if (err) {
             console.log(err);

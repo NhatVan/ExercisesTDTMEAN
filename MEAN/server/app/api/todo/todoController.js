@@ -34,8 +34,8 @@ exports.updateTodos = function(req,res){
 	});
 };
 
-exports.deleteAllTodos = function(req,res){
-	todoService.deleteAllTodos().then(function(responseMessage){
+exports.cleanUpTodos = function(req,res){
+    todoService.cleanUpTodos().then(function (responseMessage) {
 	    var resJson = responseMessage.toJson();
 	    return res.json(resJson.status, resJson);
 	});
